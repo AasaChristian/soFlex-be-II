@@ -27,5 +27,5 @@ server.listen(Port, () => {
   });
 
   app.use('/api/users', Users);
-  app.use('/api/users', Exercies);
-  app.use('/api/users', Regimen);
+  app.use('/api/exercises', Exercies);
+  app.use('/api/regimen', Regimen);
