@@ -8,7 +8,7 @@ const Port = process.env.PORT || 5000;
 const Users = require('./Routers/user-router')
 const Exercies = require('./Routers/exercises-router')
 const Regimen = require('./Routers/regimen-router')
-// const cors = require('cors')
+const cors = require('cors')
 
 server.listen(Port, () => {
     console.log(`Listening at ${Port}`);
