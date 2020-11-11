@@ -5,7 +5,7 @@ const server = require('http').createServer(app);
 
 const Port = process.env.PORT || 5000;
 
-
+const Users = require('./Routers/user-router')
 // const cors = require('cors')
 
 server.listen(Port, () => {
@@ -23,3 +23,5 @@ server.listen(Port, () => {
   app.get("/", (req, res) => {
     res.send({ response: "I am alive Test" }).status(200);
   });
+
+  app.use('/api/users', Users);
