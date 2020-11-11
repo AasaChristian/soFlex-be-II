@@ -1,25 +1,18 @@
 // Update with your config settings.
 
-const postgresql = require('pg')
-
 module.exports = {
 
   development: {
-    client: 'postgresql',
+    client: 'sqlite3',
     connection: {
-      database: 'ace_meme',
-      user:     'postgres',
-      password: 'Mastat20'
-    },
-    migrations: {
-      tableName: 'knex_migrations'
+      filename: './dev.sqlite3'
     }
   },
 
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'ace_meme',
+      database: 'my_db',
       user:     'username',
       password: 'password'
     },
@@ -33,16 +26,18 @@ module.exports = {
   },
 
   production: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
-    
+    client: 'postgresql',
+    connection: {
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
+    },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: "knex_migrations",
-      directory: __dirname + '/migrations'
+      tableName: 'knex_migrations'
     }
   }
 

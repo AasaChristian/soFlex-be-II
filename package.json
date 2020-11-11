@@ -19,9 +19,11 @@
   },
   "homepage": "https://github.com/AasaChristian/soFlex-be-II#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "knex": "^0.21.12",
     "nodemon": "^2.0.6",
-    "pg": "^8.5.0"
+    "pg": "^8.5.0",
+    "sqlite3": "^5.0.0"
   }
 }
