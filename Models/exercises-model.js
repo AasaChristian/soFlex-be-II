@@ -1,6 +1,7 @@
 const db = require("../db-config.js");
 
 module.exports ={
+    getAll,
     findById,
     addExercise,
     updateExercise,
@@ -8,6 +9,10 @@ module.exports ={
 
 };
 
+function getAll(){
+    return db("exercises").select("*")
+     
+}
 function findById(id){
     return db("exercises").where({id}).first()
      
