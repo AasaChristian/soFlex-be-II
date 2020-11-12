@@ -7,6 +7,21 @@ const Exercises = require('../Models/exercises-model');
 
 // for endpoints beginning with /api/auth
 
+router.get('/all', (req, res) => {
+
+
+  Exercises.getAll()
+  .then(found => {
+      if (!found){
+      res.status(400).json({message:`exercises at id ${id} doesn't exist`})  
+      }
+      res.status(200).json(found)
+  })
+  .catch(err => {
+      console.log(err,"catch")
+  })
+  
+})
 
 router.get('/find/:id', (req, res) => {
     let id = req.params.id
@@ -27,7 +42,7 @@ router.get('/find/:id', (req, res) => {
 
 router.post('/add', (req, res) => {
   let exercise = req.body;
-
+  console.log(exercise, "exercise")
   Exercises.addExercise(exercise)
     .then(saved => {
         console.log(saved, "saved")
