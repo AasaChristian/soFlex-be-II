@@ -3,12 +3,16 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    client: 'postgresql',
     connection: {
-      filename: './dev.sqlite3'
+      database: 'soflex2',
+      user:     'postgres',
+      password: 'Mastat20'
+    },
+    migrations: {
+      tableName: 'knex_migrations'
     }
   },
-
   staging: {
     client: 'postgresql',
     connection: {
