@@ -16,6 +16,7 @@ server.listen(Port, () => {
   
   var corsOptions = {
       origin: process.env.BASE_URL || "http://localhost:3000",
+      // origin: "http://localhost:3000",
       methods: "GET,PUT,POST,DELETE",
          credentials: false
   }
