@@ -13,7 +13,7 @@ function findByuserId(userId){
     .where({userId})
     .join("exercises as e", "e.id", "r.exerciseId")
     .join("users as u", "u.id", "r.userId")
-    .select("r.id as regimenID", "r.weight as regimenWeight", "*" )
+    .select("r.id as regimenID", "r.weight as regimenWeight", "r.name as regimenName", "*" )
      
 }
 
