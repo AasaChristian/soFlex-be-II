@@ -1,16 +1,27 @@
 
 const router = require('express').Router();
 
-
 const Users = require('../Models/users-model');
+
+
+const {jwtSecret} = require('../auth/secrets');
+const bc = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // for endpoints beginning with /api/auth
 router.post('/register', (req, res) => {
   let user = req.body;
 
+  const hash = bc.hashSync(user.password, 8); 
+
+  user.password = hash
+
   Users.addUser(user)
     .then(saved => {
-      res.status(201).json(saved);
+      const token = signToken(saved)
+      const {username, id} = user
+
+      res.status(201).json({token, username, id});
     })
     .catch(error => {
       res.status(500).json(error);
@@ -19,13 +30,19 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   let { username, password } = req.body;
+
   console.log(username, password, "username password")
+
   Users.findByUserName(username)
     .first()
     .then(user => {
-    const dbPassword = user.password
-    if (password === dbPassword){
-        res.status(200).json( user ); 
+
+    if (user && bc.compareSync(password, user.password)){
+
+      const token = signToken(user)
+
+      const {username, id} = user
+        res.status(200).json( {token, username, id} ); 
 
     } else{
         res.status(401).json({ message: 'Invalid Credentials' });
