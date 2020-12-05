@@ -26,12 +26,12 @@ function addregimen(regimens){
     return db("regimen").insert(regimens).returning("*")
 }
 
-async function updateRegimens(regimens, id){
+async  function updateRegimens(regimens, id, userId){
     await db("regimen")
     .where({id})
     .update(regimens)
     return findById(id)
-    
+
     
 }
 
