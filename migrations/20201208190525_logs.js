@@ -2,8 +2,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable("logs", tbl => {
         tbl.increments();
-        tbl.string('name').notNullable();
-        tbl.string('link')
+        tbl.string('type').notNullable();
         tbl.integer("userId")
         .unsigned()
         .notNullable()
@@ -12,18 +11,20 @@ exports.up = function(knex) {
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
 
-        tbl.integer("exerciseId")
+        tbl.integer("regimenId")
         .unsigned()
         .notNullable()
         .references("id")
-        .inTable("exercises")
+        .inTable("regimen")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
 
-        tbl.integer('sets')
+        tbl.integer('set')
         tbl.integer('reps')
         tbl.integer('weight')
-        tbl.boolean('completion')
+        tbl.string('post')
+        tbl.binary('img', 1000000);
+        tbl.timestamp("dateAdded", 20).defaultTo(knex.fn.now());
     })
 
   
