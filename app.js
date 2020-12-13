@@ -8,6 +8,7 @@ const Port = process.env.PORT || 5000;
 const Users = require('./Routers/user-router')
 const Exercies = require('./Routers/exercises-router')
 const Regimen = require('./Routers/regimen-router')
+const Logs = require('./Routers/logs-router')
 const cors = require('cors')
 
 server.listen(Port, () => {
@@ -30,3 +31,4 @@ server.listen(Port, () => {
   app.use('/api/users', Users);
   app.use('/api/exercises', Exercies);
   app.use('/api/regimen', Regimen);
+  app.use('/api/logs', Logs);
