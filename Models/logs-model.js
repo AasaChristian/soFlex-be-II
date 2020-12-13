@@ -10,7 +10,8 @@ function findByuserId(userId){
     .where("logs.userId", userId)
     .join("regimen", "regimen.id", "logs.regimenId")
     .join("users as u", "u.id", "logs.userId")
-    .select("regimen.id as regimenID", "regimen.weight as regimenWeight", "regimen.name as regimenName", "logs.weight as Loggedweight", "logs.reps as LoggedReps","*" ) 
+    .join("exercises", "exercises.id", "regimen.exerciseId")
+    .select("regimen.id as regimenID", "regimen.weight as regimenWeight", "regimen.name as regimenName", "logs.weight as LoggedWeight", "logs.reps as LoggedReps","logs.set as LoggedSet","*" ) 
 }
 
 function addLog(log){
