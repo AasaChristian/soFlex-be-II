@@ -84,9 +84,9 @@ router.delete('/remove/:id', (req, res) => {
     Regimen.remove(id)
   .then(removed => {
       if (removed == 1){
-        res.status(500).json({message: "regimen was removed"})
+        res.status(200).json({message: "regimen was removed"})
       } else {
-        res.status(200).json({message: " error finding regimen"})
+        res.status(500).json({message: " error finding regimen"})
       }
       
   }).catch(err => res.status(500).json({message: "delete unsuccesful"}))

@@ -76,9 +76,9 @@ router.delete('/remove/:id', (req, res) => {
   Exercises.remove(id)
   .then(removed => {
       if (removed == 1){
-        res.status(500).json({message: "exercies was removed"})
+        res.status(200).json({message: "exercies was removed"})
       } else {
-        res.status(200).json({message: " error finding exercise"})
+        res.status(500).json({message: " error finding exercise"})
       }
       
   }).catch(err => res.status(500).json({message: "delete unsuccesful"}))
