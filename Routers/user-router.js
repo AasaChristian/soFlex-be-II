@@ -19,7 +19,8 @@ router.post('/register', (req, res) => {
   Users.addUser(user)
     .then(saved => {
       const token = signToken(saved)
-      const {username, id} = user
+
+      const {username, id} = saved[0]
 
       res.status(201).json({token, username, id});
     })
