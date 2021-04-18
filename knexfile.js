@@ -13,6 +13,7 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   },
+
   staging: {
     client: 'postgresql',
     connection: {
@@ -31,7 +32,7 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: process.env.HEROKU_POSTGRESQL_IVORY_URL,
     
     pool: {
       min: 2,
