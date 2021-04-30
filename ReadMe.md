@@ -25,7 +25,7 @@ Not only am I a web developer, I'm also a fitness junkie and I wanted to create 
 • Mobile first design
 
 
-## API Rerference |
+<!-- ## API Rerference | -->
 
 
 ## License|
