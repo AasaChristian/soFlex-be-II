@@ -43,10 +43,12 @@ module.exports = {
       directory: __dirname + '/migrations'
     },
 
-    ssl: {    
-      require: true,
-      rejectUnauthorized: false 
-    }
+    ssl: true,
+    extra: {
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    },
 
   }
 
