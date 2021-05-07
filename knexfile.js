@@ -42,12 +42,12 @@ module.exports = {
       tableName: "knex_migrations",
       directory: __dirname + '/migrations'
     },
-    ssl: true,
-    extra: {
-      ssl: {
-        rejectUnauthorized: false
-      },
-    },
+
+    ssl: {    
+      require: true,
+      rejectUnauthorized: false 
+    }
+
   }
 
   // production: {
