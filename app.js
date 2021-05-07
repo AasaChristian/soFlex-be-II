@@ -15,23 +15,24 @@ const cors = require('cors')
 
 
 server.listen(Port, () => {
-    console.log(`Listening at ${Port}`);
-  });
-  
-  var corsOptions = {
-      origin: process.env.BASE_URL || "http://localhost:3000",
-      // origin: "http://localhost:3000",
-      methods: "GET,PUT,POST,DELETE",
-         credentials: false
-  }
-  app.use(cors(corsOptions));
-  app.use(express.json());
+  console.log(`Listening at ${Port}`);
+});
 
-  app.get("/", (req, res) => {
-    res.send({ response: "I am alive Test" }).status(200);
-  });
+var corsOptions = {
+    origin: process.env.BASE_URL || "http://localhost:3000",
+    // origin: "http://localhost:3000",
+    methods: "GET,PUT,POST,DELETE",
+       credentials: false
+}
+app.use(cors(corsOptions));
+app.use(express.json());
 
-  app.use('/api/users', Users);
-  app.use('/api/exercises', Exercies);
-  app.use('/api/regimen', Regimen);
-  app.use('/api/logs', Logs);
+app.get("/", (req, res) => {
+  res.send({ response: "I am alive Test" }).status(200);
+});
+
+app.use('/api/users', Users);
+app.use('/api/exercises', Exercies);
+app.use('/api/regimen', Regimen);
+app.use('/api/logs', Logs);
+
