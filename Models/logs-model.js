@@ -2,7 +2,8 @@ const db = require("../db-config.js");
 
 module.exports ={
     findByuserId,
-    addLog
+    addLog,
+    findLoggedExercises
 };
 
 function findByuserId(userId){
@@ -16,4 +17,12 @@ function findByuserId(userId){
 
 function addLog(log){
     return db("logs").insert(log).returning("*")
+}
+
+function findLoggedExercises(userId, exId){
+    return db("logs")
+    .where("logs.userId", userId)
+    .join("regimen", "regimen.id", "logs.regimenId")
+    .join("users as u", "u.id", "logs.userId")
+    .join("exercises", "exercises.id", "regimen.exerciseId")
 }

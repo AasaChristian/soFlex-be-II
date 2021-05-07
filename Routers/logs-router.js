@@ -22,6 +22,7 @@ console.log(userId,"userId")
     
 })
 
+
 router.post('/add', (req, res) => {
     let log = req.body;
   console.log(log, "regimen")

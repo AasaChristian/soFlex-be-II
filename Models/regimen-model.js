@@ -30,9 +30,7 @@ async  function updateRegimens(regimens, id, userId){
     await db("regimen")
     .where({id})
     .update(regimens)
-    return findById(id)
-
-    
+    return findById(id)  
 }
 
 function remove(id){
