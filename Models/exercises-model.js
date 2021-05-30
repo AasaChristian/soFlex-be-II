@@ -10,7 +10,7 @@ module.exports ={
 };
 
 function getAll(){
-    return db("exercises").select("*")
+    return db("exercises").select("*").orderBy('name')
      
 }
 function findById(id){
