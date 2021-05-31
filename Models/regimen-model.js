@@ -4,6 +4,7 @@ module.exports ={
     findByuserId,
     addregimen,
     updateRegimens,
+    unComplete,
     remove
 
 };
@@ -22,6 +23,11 @@ function findById(id){
      
 }
 
+function findByLink(link){
+    return db("regimen").where({link})
+     
+}
+
 function addregimen(regimens){
     return db("regimen").insert(regimens).returning("*")
 }
@@ -31,6 +37,13 @@ async  function updateRegimens(regimens, id, userId){
     .where({id})
     .update(regimens)
     return findById(id)  
+}
+
+async  function unComplete(regimens, link, userId){
+    await db("regimen")
+    .where({link})
+    .update(regimens)
+    return findByLink(link)  
 }
 
 function remove(id){
