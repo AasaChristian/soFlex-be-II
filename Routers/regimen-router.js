@@ -78,6 +78,44 @@ Regimen.updateRegimens(updateObj, id, userId)
  
 });
 
+router.put('/unComplete/:link', (req, res) => {
+
+  console.log(req.body,"body")
+  let { name, userId, exerciseId, sets, reps, weight, completion} = req.body;
+  let link = req.params.link
+  const updateObj = {
+    name: name,
+    link: link,
+    userId: userId,
+    exerciseId: exerciseId,
+    sets: sets,
+    reps, reps,
+    weight: weight,
+    completion: completion
+}
+Regimen.unComplete(updateObj, link)
+
+.then(updated => {
+
+    const uid = updated[0].userId
+    console.log(userId, "userId HERE")
+    Regimen.findByuserId(uid)
+    .then(found => {
+      console.log("here")
+        if (!found){
+        res.status(400).json({message:`User has no regimen`})  
+        }
+        res.status(200).json(found)
+        console.log(found)
+    })
+    .catch(err => {
+        console.log(err,"catch")
+    })
+
+}).catch(err => res.status(500).json({message: "update unsuccesful"}), console.log("error here"))
+ 
+});
+
 router.delete('/remove/:id', (req, res) => {
     let id = req.params.id
 
