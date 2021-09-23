@@ -25,7 +25,7 @@ router.get('/all', (req, res) => {
 
 router.get('/find/:id', (req, res) => {
     let id = req.params.id
-    console.log(id, "id")
+    // console.log(id, "id")
 
     Exercises.findById(id)
     .then(found => {
@@ -42,10 +42,10 @@ router.get('/find/:id', (req, res) => {
 
 router.post('/add', (req, res) => {
   let exercise = req.body;
-  console.log(exercise, "exercise")
+  // console.log(exercise, "exercise")
   Exercises.addExercise(exercise)
     .then(saved => {
-        console.log(saved, "saved")
+        // console.log(saved, "saved")
       res.status(201).json(saved);
     })
     .catch(error => {
@@ -64,7 +64,7 @@ router.put('/update/:id', (req, res) => {
 Exercises.updateExercise(updateObj, id)
 
 .then(updated => {
-    console.log(updated, "updated")
+    // console.log(updated, "updated")
     res.status(200).json({updated: updated})
 }).catch(err => res.status(500).json({message: "update unsuccesful"}))
  
